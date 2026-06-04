@@ -17,17 +17,29 @@
   var toggle = document.getElementById("menuToggle");
   var mobile = document.getElementById("mobileMenu");
   if (toggle && mobile) {
-    toggle.addEventListener("click", function () {
-      var open = mobile.classList.toggle("open");
+    function setMobileMenu(open) {
+      mobile.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    }
+
+    toggle.addEventListener("click", function () {
+      setMobileMenu(!mobile.classList.contains("open"));
     });
+
     mobile.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
-        mobile.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
+        setMobileMenu(false);
       });
     });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setMobileMenu(false);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 720) setMobileMenu(false);
+    }, { passive: true });
   }
 
   /* ---------- FAQ acordeão ---------- */

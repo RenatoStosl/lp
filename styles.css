@@ -237,12 +237,26 @@ p { margin: 0; text-wrap: pretty; }
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
   border-top: 1px solid var(--line);
   background: var(--surface);
   padding: 14px var(--gutter) 22px;
+  box-shadow: 0 24px 45px -28px rgba(14, 27, 51, .32);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
 }
-.mobile-menu.open { display: block; }
+.mobile-menu.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 .mobile-menu a {
   display: block;
   padding: 13px 6px;
@@ -250,6 +264,12 @@ p { margin: 0; text-wrap: pretty; }
   font-weight: 500;
   border-bottom: 1px solid var(--line-2);
   color: var(--ink);
+}
+.mobile-menu a.btn-primary {
+  display: flex;
+  color: #fff;
+  border-bottom: 0;
+  padding: 15px 20px;
 }
 .mobile-menu .btn { width: 100%; margin-top: 16px; }
 
@@ -780,6 +800,7 @@ p { margin: 0; text-wrap: pretty; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .browser { transform: none; }
+  .mobile-menu { transition: none; transform: none; }
 }
 
 /* ============================================================

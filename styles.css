@@ -726,11 +726,12 @@ p { margin: 0; text-wrap: pretty; }
    ============================================================ */
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 26px;
 }
 .member {
   display: flex;
+  flex-direction: column;
   gap: 24px;
   align-items: stretch;
   background: var(--surface);
@@ -742,7 +743,8 @@ p { margin: 0; text-wrap: pretty; }
 }
 .member:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--brand-tint-2); }
 .member-photo {
-  width: 168px;
+  width: 100%;
+  height: 300px;
   flex: none;
   border-radius: var(--r-md);
   overflow: hidden;
@@ -760,7 +762,7 @@ p { margin: 0; text-wrap: pretty; }
   object-position: center 18%;
   display: block;
 }
-.member-info { display: flex; flex-direction: column; padding: 8px 6px 8px 0; }
+.member-info { display: flex; flex-direction: column; flex: 1; padding: 4px 6px 6px; }
 .member-role {
   align-self: flex-start;
   display: inline-flex; align-items: center; gap: 7px;
@@ -816,7 +818,7 @@ p { margin: 0; text-wrap: pretty; }
   .step:nth-child(2)::after { display: none; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
   .faq-grid { grid-template-columns: 1fr; gap: 28px; }
-  .team-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 720px) {
@@ -831,6 +833,7 @@ p { margin: 0; text-wrap: pretty; }
   .work-grid { grid-template-columns: 1fr; }
   .float-card { left: 12px; bottom: -20px; }
   .hero-actions .btn { flex: 1; }
+  .team-grid { grid-template-columns: 1fr; }
   .member { flex-direction: column; gap: 18px; }
   .member-photo { width: 100%; height: 280px; }
   .member-photo img { object-position: center 22%; }

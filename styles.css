@@ -152,6 +152,31 @@ p { margin: 0; text-wrap: pretty; }
 .btn-white { background: #fff; color: var(--brand-ink); }
 .btn-white:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 
+.whatsapp-float {
+  position: fixed;
+  right: clamp(18px, 3vw, 34px);
+  bottom: clamp(18px, 3vw, 34px);
+  z-index: 80;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(37, 211, 102, .16), 0 16px 34px -10px rgba(16, 138, 67, .78);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.whatsapp-float:hover {
+  background: #20C45E;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 0 0 10px rgba(37, 211, 102, .18), 0 20px 42px -10px rgba(16, 138, 67, .85);
+}
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+}
+
 /* ============================================================
    HEADER
    ============================================================ */
@@ -803,6 +828,7 @@ p { margin: 0; text-wrap: pretty; }
   html { scroll-behavior: auto; }
   .browser { transform: none; }
   .mobile-menu { transition: none; transform: none; }
+  .whatsapp-float { transition: none; }
 }
 
 /* ============================================================
@@ -837,4 +863,14 @@ p { margin: 0; text-wrap: pretty; }
   .member { flex-direction: column; gap: 18px; }
   .member-photo { width: 100%; height: 280px; }
   .member-photo img { object-position: center 22%; }
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    right: 18px;
+    bottom: 18px;
+  }
+  .whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+  }
 }
